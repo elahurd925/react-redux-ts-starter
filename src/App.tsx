@@ -5,13 +5,11 @@ import { getRoutes } from "./Routes";
 class App extends React.Component {
 	public render() {
 		return (
-			<>
-			<div className="app-wrapper">
+			<div>
 				<BrowserRouter>
 					{ getRoutes() }
 				</BrowserRouter>
 			</div>
-			</>
 		);
 	}
 }
