@@ -1,4 +1,5 @@
+import TodoItem from "./TodoItem";
 
 export default interface TodoState {
-	todos: string[]
+	items: TodoItem[]
 }

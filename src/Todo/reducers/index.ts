@@ -1,12 +1,26 @@
-import TodoState from "../models/TodoState";
+import { v1 as uuidv1 } from 'uuid';
 
-export const todosDefaultState: TodoState = {
-	todos: []
+import TodoState from "../models/TodoState";
+import { Actions, ADD_ITEM } from "../actions";
+import TodoItem from "../models/TodoItem";
+
+export const defaultTodosState: TodoState = {
+	items: [
+		{
+			id: uuidv1(),
+			text: "Wake up"
+		}
+	]
 };
 
-// TODO: Create Actions type for action
-const todos = (state: TodoState = todosDefaultState, action: any): TodoState => {
+const todos = (state: TodoState = defaultTodosState, action: Actions): TodoState => {
 	switch (action.type) {
+		case ADD_ITEM:
+			const newItem: TodoItem = {
+				id: uuidv1(),
+				text: action.payload
+			};
+			return { ...state, items: [...state.items, newItem ] };
 		default:
 			return state;
 	}
